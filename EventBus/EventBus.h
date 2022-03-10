@@ -36,7 +36,7 @@ public:
      * @param sender 事件发送者 指定处理具体事件发送者
      */
     template <class T>
-    static void addHandler(EventHandler<T> & handler, EObject & sender) {
+    void addHandler(EventHandler<T> & handler, EObject & sender) {
         EventBus& instance = getInstance();
 
         // 根据事件类型获取事件处理map
@@ -58,7 +58,7 @@ public:
      * @param handler 事件接收处理者
      */
     template <class T>
-    static void addHandler(EventHandler<T> & handler) {
+    void addHandler(EventHandler<T> & handler) {
         EventBus& instance = getInstance();
 
         // 根据事件类型获取事件处理map
@@ -80,7 +80,7 @@ public:
      * @param handler 事件接收处理者
      */
     template <class T>
-    static bool removeHandler(EventHandler<T> & handler){
+    bool removeHandler(EventHandler<T> & handler){
         EventBus& instance = getInstance();
 
         // 根据事件类型获取事件处理map
@@ -101,7 +101,7 @@ public:
      *
      * @param e 需要派发的事件
      */
-    static void fireEvent(Event & e) {
+    void fireEvent(Event & e) {
         EventBus& instance = getInstance();
 
         Registrations* registrations = instance.handlers[typeid(e)];
